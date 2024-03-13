@@ -1,6 +1,6 @@
 import { Center, HStack, Tag, TagLabel, Text, VStack } from "@chakra-ui/react";
 import { animated, useSpring } from "@react-spring/web";
-import { QRCodeCanvas } from "qrcode.react";
+import { QRCodeSVG } from "qrcode.react";
 import { useRef } from "react";
 import { Helmet } from "react-helmet";
 
@@ -23,20 +23,28 @@ const PageMain = () => {
 
   return (
     <>
-      <Helmet><title>Order Entry</title></Helmet>
-      <VStack height="100vh" justifyContent="center" bg="gray.900">
-        <Center mb="20px" as={animated.div} style={{ transition: '.3s', ...opacityProps }}>
-          <HStack spacing={1}>
-            <Text fontSize="3xl" as="b" color="yellow.400">Flash</Text>
-            <Text fontSize="3xl" as="b" color="white">Order</Text>
-            <Tag fontSize="3xl" variant="solid" colorScheme="green"><TagLabel>Entry</TagLabel></Tag>
-          </HStack>
+      <Helmet><title>Flash Order - Entry</title></Helmet>
+      <VStack spacing={6} height="100vh" justifyContent="center" bg="gray.900">
+        <Center as={animated.div} style={{ transition: '.3s', ...opacityProps }}>
+          <VStack spacing={.1}>
+            <HStack spacing={1}>
+              <Text fontSize="3xl" as="b" color="yellow.400">Flash</Text>
+              <Text fontSize="3xl" as="b" color="white">Order</Text>
+            </HStack>
+            <Text fontSize="xs" color="white">ORDER AND PAY BY PHONE</Text>
+          </VStack>
         </Center>
         <Center ref={boxRef} as={animated.div} style={{ transition: '.3s', ...opacityProps }}>
           <animated.div style={{ transform: xys.to(trans) }} onMouseLeave={handleMouseLeave}
             onMouseMove={handleMouseMove}>
-            <QRCodeCanvas value="https://google.com" level="H" bgColor="#171923" fgColor="white"/>
+            <QRCodeSVG value="https://google.com" level="H" bgColor="#171923" fgColor="white" />
           </animated.div>
+        </Center>
+        <Center>
+          <VStack spacing={1}>
+            <Text fontSize="xs" color="white">Please scan the QR code</Text>
+            <Tag fontSize="3xl" variant="solid" colorScheme="green"><TagLabel>Entry</TagLabel></Tag>
+          </VStack>
         </Center>
       </VStack>
     </>
