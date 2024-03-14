@@ -7,13 +7,15 @@ export default defineConfig({
   resolve: {
     alias: {
       '@components': '/src/components',
-      '@assets': '/src/assets',
       '@hooks': '/src/hooks',
       '@pages': '/src/pages/',
       '@routes': '/src/routes',
       '@services': '/src/services',
       '@enum': '/src/enum',
       '@utils': '/src/utils',
+      '@i18n': '/src/i18n',
+      '@locales': '/src/locales',
+      '@constants': '/src/constants',
     }
   }
 })

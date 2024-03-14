@@ -25,13 +25,15 @@
     /* alias */
     "paths": {
       "@components/*": ["components/*"],
-      "@assets*": ["assets/*"],
       "@hooks": ["hooks/*"],
       "@pages/*": ["pages/*"],
       "@routes/*": ["routes/*"],
       "@services/*": ["services/*"],
       "@enum/*": ["enum/*"],
       "@utils/*": ["utils/*"],
+      "@locales/*":["locales/*"],
+      "@i18n":["i18n.ts"],
+      "@constants/*":["constants/*"],
     }
   },
   "include": ["src"],
