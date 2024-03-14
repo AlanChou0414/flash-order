@@ -1,54 +1,55 @@
-import { Center, HStack, Tag, TagLabel, Text, VStack } from "@chakra-ui/react";
-import { animated, useSpring } from "@react-spring/web";
-import { QRCodeSVG } from "qrcode.react";
-import { useRef } from "react";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
+import { Box, HStack, Image, Select, Text, VStack, useBoolean } from "@chakra-ui/react";
+import { LanguageSelect, LayoutButton } from "@components/layout";
+import i18n from "@i18n";
 import { Helmet } from "react-helmet";
 
+/* Center */
 const PageMain = () => {
-  const boxRef = useRef<HTMLDivElement>(null)
-  const opacityProps = useSpring({ from: { opacity: 0 }, to: { opacity: 1 } })
-  const [{ xys }, api] = useSpring(() => ({ xys: [0, 0, 1] }), [])
-  const handleMouseLeave = () => api.start({ xys: [0, 0, 1] })
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = boxRef?.current?.getBoundingClientRect()
-    if (rect) api.start({ xys: calc(e.clientX, e.clientY, rect) })
-  }
-  const calc = (x: number, y: number, rect: DOMRect) => [
-    -(y - rect.top - rect.height / 2) / 5,
-    (x - rect.left - rect.width / 2) / 5,
-    1.4
-  ]
-  const trans = (x: number, y: number, s: number) =>
-    `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
+  const [mode, setMode] = useBoolean();
 
   return (
     <>
-      <Helmet><title>Flash Order - Entry</title></Helmet>
-      <VStack spacing={6} height="100vh" justifyContent="center" bg="gray.900">
-        <Center as={animated.div} style={{ transition: '.3s', ...opacityProps }}>
-          <VStack spacing={.1}>
-            <HStack spacing={1}>
-              <Text fontSize="3xl" as="b" color="yellow.400">Flash</Text>
-              <Text fontSize="3xl" as="b" color="white">Order</Text>
+      <Helmet><title>Flash Order</title></Helmet>
+      <VStack height="100vh" justifyContent="center">
+        <LanguageSelect />
+        <Image src="https://fakeimg.pl/100x100/E3E3E3" borderRadius="10px" />
+        <Box>
+          <HStack spacing={1}>
+            <Text fontSize="lg" as="b" color="yellow.400">Flash</Text>
+            <Text fontSize="lg" as="b" color="text">Order</Text>
+          </HStack>
+        </Box>
+        <Box>
+          <VStack spacing={5} mt="20px" borderRadius="10px" bg="gray.200" p="20px">
+            <HStack spacing={3}>
+              <LayoutButton active={mode} icon={<ArrowForwardIcon />}
+                text={i18n.t('takeOut')} onClick={setMode.on} />
+              <LayoutButton active={!mode} icon={<ArrowForwardIcon />}
+                text={i18n.t('stayIn')} onClick={setMode.off} />
             </HStack>
-            <Text fontSize="xs" color="white">ORDER AND PAY BY PHONE</Text>
-          </VStack>
-        </Center>
-        <Center ref={boxRef} as={animated.div} style={{ transition: '.3s', ...opacityProps }}>
-          <animated.div style={{ transform: xys.to(trans) }} onMouseLeave={handleMouseLeave}
-            onMouseMove={handleMouseMove}>
-            <QRCodeSVG value="https://google.com" level="H" bgColor="#171923" fgColor="white" />
-          </animated.div>
-        </Center>
-        <Center>
-          <VStack spacing={1}>
-            <Text fontSize="xs" color="white">Please scan the QR code</Text>
-            <Tag fontSize="3xl" variant="solid" colorScheme="green"><TagLabel>Entry</TagLabel></Tag>
-          </VStack>
-        </Center>
-      </VStack>
-    </>
-  )
-}
+            {
+              mode
+                ? <>
+                </>
+                : <VStack spacing={3}>
+                  <Text as="b" fontSize="sm">{i18n.t('pleaseSelectTheNumberOfDiners')}</Text>
+                  <Select mb="20px" textAlign="center" size="sm" variant='flushed' borderColor="teal.500"
+                    iconColor="teal.500">
+                    {Array.from({ length: 10 }).map((item, index) => (
+                      <option value={index + 1}>{index + 1}</option>
+                    ))}
+                  </Select>
+                  <LayoutButton props={{ px: '80px', py: '20px', size: "md" }} active
+                    text={i18n.t('startOrdering')} />
+                </VStack>
 
-export default PageMain
+            }
+          </VStack>
+        </Box>
+      </VStack >
+    </>
+  );
+};
+
+export default PageMain;
