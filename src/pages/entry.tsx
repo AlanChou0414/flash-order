@@ -1,11 +1,10 @@
 import { Box, HStack, Tag, TagLabel, Text, VStack } from "@chakra-ui/react";
-import { LanguageSelect } from "@components/layout";
+import { Layout } from "@components/layout";
 import { PATH } from "@constants/path";
 import i18n from "@i18n";
 import { animated, useSpring } from "@react-spring/web";
 import { QRCodeSVG } from "qrcode.react";
 import { useRef } from "react";
-import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 
 /* Entry */
@@ -28,10 +27,8 @@ const PageMain = () => {
     `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
   return (
-    <>
-      <Helmet><title>Flash Order - {i18n.t('entry')}</title></Helmet>
-      <VStack spacing={6} height="100vh" justifyContent="center" bg="gray.900">
-        <LanguageSelect color="white" />
+    <Layout title={i18n.t('entry')} showFooter={false} langTextColor={"white"}>
+      <VStack spacing={6} minHeight="100vh" justifyContent="center" bg="gray.900">
         <Box as={animated.div} style={springsProps}>
           <VStack spacing={.1}>
             <HStack spacing={1}>
@@ -58,7 +55,7 @@ const PageMain = () => {
           </VStack>
         </Box>
       </VStack>
-    </>
+    </Layout>
   );
 };
 

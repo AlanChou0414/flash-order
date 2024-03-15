@@ -7,5 +7,12 @@
   "takeOut": "外帶",
   "stayIn": "內用",
   "pleaseSelectTheNumberOfDiners": "請選擇用餐人數",
-  "startOrdering": "開始點餐"
+  "startOrdering": "開始點餐",
+  "ordering": "點餐",
+  "system": "系統",
+  "noProductsSelected": "未選擇任何商品",
+  "placeOrder": "下單",
+  "selected": "已選",
+  "items": "份",
+  "clear": "清空"
 }
