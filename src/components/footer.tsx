@@ -11,7 +11,7 @@ const ShoppingCart = ({ show = true, item }: {
   return (
     show &&
     <Box display="flex" justifyContent={item ? "space-between" : ""} alignItems="center"
-      minWidth="100vw" bg="#353535" position="fixed" bottom={0} height="3rem">
+      width="100%" maxWidth="768px" bg="#353535" position="fixed" bottom={0} height="3rem">
       <Button borderRadius="0" height="100%" bg="#252525" position="relative" mr=".5rem"
         onClick={() => item ? onOpen() : ""}>
         {item && <Badge borderRadius="20%" bg="red.500" position="absolute"
@@ -36,7 +36,7 @@ const ShoppingCart = ({ show = true, item }: {
             <Box display="flex" alignItems="center" justifyContent="space-between">
               <Text color="gray.600" fontSize="xs">{i18n.t('selected')} {item} {i18n.t('items')}</Text>
               <Button size="xs" variant='ghost' color="gray.600" leftIcon={<DeleteIcon />}
-                  iconSpacing="2px">{i18n.t('clear')}</Button>
+                iconSpacing="2px">{i18n.t('clear')}</Button>
             </Box>
           </DrawerHeader>
           <DrawerBody minHeight="10rem">
