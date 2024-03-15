@@ -25,7 +25,7 @@
     /* alias */
     "paths": {
       "@components/*": ["components/*"],
-      "@hooks": ["hooks/*"],
+      "@hooks/*": ["hooks/*"],
       "@pages/*": ["pages/*"],
       "@routes/*": ["routes/*"],
       "@services/*": ["services/*"],

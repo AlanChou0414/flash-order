@@ -1,4 +1,5 @@
 export const PATH = {
   ENTRY: '/',
-  CENTER: '/center'
+  CENTER: '/center',
+  ORDERING: '/ordering'
 };

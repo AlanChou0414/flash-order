@@ -1,11 +1,18 @@
 {
   "entry": "Entry",
   "pleaseScanTheQRCode": "Please scan the QR code",
-  "orderAndPayByPhone": "Order and pay bY phone",
+  "orderAndPayByPhone": "Order and pay by phone",
   "english": "English",
   "chinese": "Chinese",
   "takeOut": "Take out",
   "stayIn": "Stay in",
   "pleaseSelectTheNumberOfDiners": "Please select the number of diners",
-  "startOrdering": "Start ordering"
+  "startOrdering": "Start ordering",
+  "ordering": "Ordering",
+  "system": "System",
+  "noProductsSelected": "No products selected",
+  "placeOrder": "Place Order",
+  "selected": "Selected",
+  "items": "Items",
+  "clear": "Clear"
 }
