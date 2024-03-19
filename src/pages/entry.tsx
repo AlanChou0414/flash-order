@@ -1,5 +1,5 @@
 import { Box, HStack, Tag, TagLabel, Text, VStack } from "@chakra-ui/react";
-import { Layout } from "@components/layout";
+import { LanguageSelect, Layout } from "@components/layout";
 import { PATH } from "@constants/path";
 import i18n from "@i18n";
 import { animated, useSpring } from "@react-spring/web";
@@ -27,8 +27,9 @@ const PageMain = () => {
     `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
   return (
-    <Layout title={i18n.t('entry')} showFooter={false} langTextColor={"white"}>
-      <VStack spacing={6} minHeight="100vh" justifyContent="center" bg="gray.900">
+    <Layout title={i18n.t('entry')} showFooter={false} showHeader={false}>
+      <LanguageSelect color={"white"} />
+      <VStack spacing={6} minH="100vh" justifyContent="center" bg="gray.900">
         <Box as={animated.div} style={springsProps}>
           <VStack spacing={.1}>
             <HStack spacing={1}>
