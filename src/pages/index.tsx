@@ -12,7 +12,7 @@ const PageMain = () => {
   const [guest, setGuest] = useState<string>('1');
 
   return (
-    <Layout title={i18n.t('system')} showFooter={false} showHeader={false}>
+    <Layout title={i18n.t('system')} showFooter={false} showStatusHeader={false} showTabsHeader={false}>
       <LanguageSelect color={"white"} />
       <Box backgroundImage="url('/images/food.jpg')" backgroundSize="cover">
         <Box bg="#00000050">

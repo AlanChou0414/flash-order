@@ -1,8 +1,8 @@
 import { Box, Center, HStack, Text } from "@chakra-ui/react";
 import i18n from "@i18n";
-import { LanguageSelect } from "./layout";
+import { LanguageSelect, LayoutTag } from "./layout";
 
-const StatusHeader = ({ show = true, mode, guest }: {
+export const StatusHeader = ({ show = true, mode, guest }: {
   show?: boolean;
   mode?: boolean;
   guest?: string;
@@ -11,7 +11,8 @@ const StatusHeader = ({ show = true, mode, guest }: {
   return (
     show &&
     <Box display="flex" justifyContent="space-between" alignItems="center" px="1rem"
-      width="100%" position="fixed" top={0} height="3rem" borderBottom=".5px solid #e3e3e3">
+      width="100%" position="sticky" top={0} height="3rem" borderBottom=".5px solid #e3e3e3"
+      bg="white">
       {mode
         ? <HStack>
           <Center color="gray.600"> <i className="fa-solid fa-utensils"></i></Center>
@@ -27,4 +28,20 @@ const StatusHeader = ({ show = true, mode, guest }: {
   );
 };
 
-export default StatusHeader;
+export const TabsHeader = ({ show = true, tabs }: {
+  tabs?: TABS_INFO[];
+  show?: boolean;
+}) => {
+  return (
+    show && tabs?.length !== 0 &&
+    <Box display="flex" alignItems="center" position="sticky" top={"3rem"} height="3rem"
+      borderBottom=".5px solid #e3e3e3" bg="white" px="1rem"
+      overflowX="auto" width="100%" overflowY="hidden">
+      <HStack spacing={4} width="200%">
+        {tabs?.map((item) => (
+          <Center key={item.id}><LayoutTag title={item.name} /></Center>
+        ))}
+      </HStack >
+    </Box >
+  );
+};

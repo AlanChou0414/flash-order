@@ -5,24 +5,23 @@ import { useWindowSize } from "react-use";
 
 const ShoppingCart = ({ show = true, item }: {
   show?: boolean;
-  item?: number;
+  item?: ORDER_INFO[];
 }) => {
   const { width, height } = useWindowSize();
   const { isOpen, onClose, onToggle } = useDisclosure();
 
   return (
     show &&
-    <Box display="flex" justifyContent={item ? "space-between" : ""} alignItems="center" zIndex={1401}
+    <Box display="flex" justifyContent={item?.length ? "space-between" : ""} alignItems="center" zIndex={1401}
       width="100%" bg="#353535" position="fixed" bottom={0} height="3rem" >
       <Button borderRadius="0" height="100%" bg="#252525" position="relative" mr=".5rem"
         onClick={() => item ? onToggle() : ''}>
-        {item && <Badge borderRadius="20%" bg="red.500" position="absolute"
-          top="-8px" right="-8px">
-          <Text fontSize="xs" color="white">{item}</Text>
+        {item?.length && <Badge display="flex" justifyContent="center" alignItems="center" borderRadius="50rem" bg="red.500" position="absolute" top="-8px" right="-8px" w="22px" h="22px">
+          <Text fontSize="md" color="white">{item?.length}</Text>
         </Badge>}
         <i className="fa-solid fa-cart-shopping"></i>
       </Button>
-      {item
+      {item?.length
         ? <>
           <Heading size="lg" noOfLines={1} color="white">$999</Heading>
           <Button borderRadius="0" height="100%" bg="teal.500" color="white"
@@ -34,21 +33,21 @@ const ShoppingCart = ({ show = true, item }: {
         <DrawerContent bg="white" borderTopRadius="1rem" mb="3rem">
           <DrawerHeader py=".2rem" borderBottom=".5px solid #e3e3e3">
             <Box display="flex" alignItems="center" justifyContent="space-between">
-              <Text color="gray.600" fontSize="sm">{i18n.t('selected')} {item} {i18n.t('items')}</Text>
+              <Text color="gray.600" fontSize="sm">{i18n.t('selected')} {item?.length} {i18n.t('items')}</Text>
               <Button size="sm" variant='ghost' color="gray.600" leftIcon={<DeleteIcon />}
                 iconSpacing="2px">{i18n.t('clear')}</Button>
             </Box>
           </DrawerHeader>
           <DrawerBody maxH={width > height ? "14rem" : "24rem"} minH={width > height ? "14rem" : "24rem"}>
-            {Array.from({ length: 10 }).map((_, i: number) => (
-              <Box key={i} display="flex" justifyContent="space-between" borderBottom=".5px solid #e3e3e3"
+            {item?.map((item: ORDER_INFO) => (
+              <Box key={item.id} display="flex" justifyContent="space-between" borderBottom=".5px solid #e3e3e3"
                 py=".5rem">
                 <HStack spacing={5}>
-                  <Image src="https://picsum.photos/150/150" width="4rem" height="4rem" />
+                  <Image src={`https://picsum.photos/150/150?random=${item.id}`} width="4rem" height="4rem" />
                   <VStack spacing={0} alignItems="start">
-                    <Text as="b" fontSize="md">{'珍珠奶茶'}</Text>
-                    <Text fontSize="xs" color="blackAlpha.500">{'半糖,少冰'}</Text>
-                    <Text as="b" fontSize="s" color="green.500">{'$60'}</Text>
+                    <Text as="b" fontSize="md">{item.name}</Text>
+                    <Text fontSize="xs" color="blackAlpha.500">{item.record}</Text>
+                    <Text as="b" fontSize="s" color="green.500">${item.amount}</Text>
                   </VStack>
                 </HStack>
                 <HStack spacing={5}>
