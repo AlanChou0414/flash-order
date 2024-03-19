@@ -8,10 +8,10 @@ export const theme = extendTheme({
   styles: {
     global: () => ({
       'body': {
-        maxWidth: '768px',
         padding: 0,
         margin: 0,
         height: '100%',
+        minHeight: '100vh',
         overflowY: 'auto',
         overflowX: 'hidden',
         scrollBehavior: 'smooth',
@@ -28,7 +28,7 @@ export const theme = extendTheme({
     }),
     Button: defineStyleConfig({
       baseStyle: {
-       
+
       }
     })
   },

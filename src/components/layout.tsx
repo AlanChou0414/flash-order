@@ -5,15 +5,22 @@ import Cookies from "js-cookie";
 import { ReactElement, ReactNode, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import ShoppingCart from "./footer";
+import StatusHeader from "./header";
 
 /* Layout Container */
-export const Layout = ({ children, title = '', showFooter = true, shoppingItems, langTextColor }: {
-  children?: ReactNode;
-  title?: string;
-  showFooter?: boolean;
-  shoppingItems?: number;
-  langTextColor?: string;
-}) => {
+export const Layout = ({
+  children, title = '',
+  showHeader = true, showFooter = true,
+  shoppingItems, mode, guest }: {
+    children?: ReactNode;
+    title?: string;
+    showHeader?: boolean;
+    showFooter?: boolean;
+    shoppingItems?: number;
+    langTextColor?: string;
+    mode?: boolean;
+    guest?: string;
+  }) => {
   const [loading, setLoading] = useBoolean();
   useEffect(() => {
     setLoading.on();
@@ -22,18 +29,21 @@ export const Layout = ({ children, title = '', showFooter = true, shoppingItems,
     }, 500);
   }, []);
   return (
-    <Box minHeight="100vh">
+    <Box>
       <Helmet><title>Flash Order - {title}</title></Helmet>
-      <LanguageSelect color={langTextColor} />
       <LayoutLoading loading={loading} />
+      <StatusHeader show={showHeader} mode={mode} guest={guest} />
       {children}
       <ShoppingCart show={showFooter} item={shoppingItems} />
     </Box>
   );
 };
 /* Language Select */
-export const LanguageSelect = ({ color }: {
+export const LanguageSelect = ({ color, position = 'absolute', top = 5, right = 5 }: {
   color?: string;
+  position?: 'relative' | 'absolute'
+  top?: number;
+  right?: number;
 }) => {
   const [selectedValue, setSelectedValue] = useState(Cookies.get(COOKIES.LANG) || 'zh-TW');
   const handleChangeLanguage = (selected: string) => {
@@ -43,7 +53,7 @@ export const LanguageSelect = ({ color }: {
     window.location.reload();
   };
   return (
-    <Center position="absolute" top={5} right={5}>
+    <Center position={position} top={top} right={right} >
       <Select fontWeight="900" size="sm" variant="unstyled" color={color} value={selectedValue}
         onChange={e => handleChangeLanguage(e.target.value)}>
         <option value="en-US">{i18n.t('english')}</option>
@@ -58,7 +68,7 @@ export const LayoutLoading = ({ loading }: {
 }) => {
   return (
     loading &&
-    <Center minHeight="100vh" bg="#00000050" position="fixed"
+    <Center minH="100vh" bg="#00000050" position="sticky"
       top={0} left={0} bottom={0} right={0} zIndex={999}>
       <Spinner size="xl" thickness=".2rem" color="teal.500" />
     </Center>

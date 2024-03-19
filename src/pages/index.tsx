@@ -1,20 +1,23 @@
 import { Box, HStack, Image, Select, Text, VStack, useBoolean } from "@chakra-ui/react";
-import { Layout, LayoutButton } from "@components/layout";
+import { LanguageSelect, Layout, LayoutButton } from "@components/layout";
 import { PATH } from "@constants/path";
 import i18n from "@i18n";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 /* Center */
 const PageMain = () => {
   const navigate = useNavigate();
   const [mode, setMode] = useBoolean();
+  const [guest, setGuest] = useState<string>('1');
 
   return (
-    <Layout title={i18n.t('system')} showFooter={false} langTextColor={"white"}>
+    <Layout title={i18n.t('system')} showFooter={false} showHeader={false}>
+      <LanguageSelect color={"white"} />
       <Box backgroundImage="url('/images/food.jpg')" backgroundSize="cover">
         <Box bg="#00000050">
-          <VStack minHeight="100vh" justifyContent="center" py="5rem">
-            <Image src="https://fakeimg.pl/100x100/E3E3E3" borderRadius="1rem" />
+          <VStack minH="100vh" justifyContent="center" py="5rem">
+            <Image src="https://picsum.photos/150/150" borderRadius="1rem" width="8rem" height="8rem" />
             <Box>
               <HStack spacing={1}>
                 <Text fontSize="2xl" as="b" color="yellow.400">Flash</Text>
@@ -24,35 +27,33 @@ const PageMain = () => {
             <Box>
               <VStack spacing={5} mt="1rem" borderRadius="1rem" bg="white" p="2rem">
                 <HStack spacing={3}>
-                  <LayoutButton active={mode} icon={<i className="fa-solid fa-bag-shopping"></i>}
-                    text={i18n.t('takeOut')} onClick={setMode.on} />
-                  <LayoutButton active={!mode} icon={<i className="fa-solid fa-utensils"></i>}
-                    text={i18n.t('stayIn')} onClick={setMode.off} />
+                  <LayoutButton active={!mode} icon={<i className="fa-solid fa-bag-shopping"></i>}
+                    text={i18n.t('takeOut')} onClick={setMode.off} />
+                  <LayoutButton active={mode} icon={<i className="fa-solid fa-utensils"></i>}
+                    text={i18n.t('stayIn')} onClick={setMode.on} />
                 </HStack>
                 <VStack spacing={3}>
-                  {
-                    mode
-                      ? <></>
-                      :
-                      <>
-                        <Text as="b" fontSize="sm">{i18n.t('pleaseSelectTheNumberOfDiners')}</Text>
-                        <Select mb="1rem" textAlign="center" size="sm" variant='flushed' borderColor="teal.500"
-                          iconColor="teal.500">
-                          {Array.from({ length: 10 }).map((item, index) => (
-                            <option key={index} value={index + 1}>{index + 1}</option>
-                          ))}
-                        </Select>
-                      </>
-                  }
+                  {!mode
+                    ? <></>
+                    : <>
+                      <Text as="b" fontSize="sm">{i18n.t('pleaseSelectTheNumberOfDiners')}</Text>
+                      <Select mb="1rem" textAlign="center" size="sm" variant='flushed' borderColor="teal.500"
+                        iconColor="teal.500" onChange={e => setGuest(e.target.value)}>
+                        {Array.from({ length: 10 }).map((_, index) => (
+                          <option key={index} value={index + 1}>{index + 1}</option>
+                        ))}
+                      </Select>
+                    </>}
                 </VStack>
-                <LayoutButton props={{ px: '5rem', py: '1.2rem', size: "md" }} active
-                  text={i18n.t('startOrdering')} onClick={() => navigate(PATH.ORDERING)} />
+                <LayoutButton active props={{ px: '5rem', py: '1.2rem', size: "md" }}
+                  text={i18n.t('startOrdering')}
+                  onClick={() => navigate(PATH.ORDERING, { state: { stayIn: mode, guest } })} />
               </VStack>
             </Box>
           </VStack >
-        </Box>
-      </Box>
-    </Layout>
+        </Box >
+      </Box >
+    </Layout >
   );
 };
 
