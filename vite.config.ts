@@ -16,6 +16,7 @@ export default defineConfig({
       '@i18n': '/src/i18n',
       '@locales': '/src/locales',
       '@constants': '/src/constants',
+      '@data': '/src/data',
     }
   }
 });

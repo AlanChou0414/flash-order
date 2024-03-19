@@ -27,7 +27,7 @@ const PageMain = () => {
     `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
   return (
-    <Layout title={i18n.t('entry')} showFooter={false} showHeader={false}>
+    <Layout title={i18n.t('entry')} showFooter={false} showStatusHeader={false} showTabsHeader={false}>
       <LanguageSelect color={"white"} />
       <VStack spacing={6} minH="100vh" justifyContent="center" bg="gray.900">
         <Box as={animated.div} style={springsProps}>

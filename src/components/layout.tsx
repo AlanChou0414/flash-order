@@ -5,18 +5,20 @@ import Cookies from "js-cookie";
 import { ReactElement, ReactNode, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import ShoppingCart from "./footer";
-import StatusHeader from "./header";
+import { StatusHeader, TabsHeader } from "./header";
 
 /* Layout Container */
 export const Layout = ({
   children, title = '',
-  showHeader = true, showFooter = true,
-  shoppingItems, mode, guest }: {
+  showStatusHeader = true, showFooter = true, showTabsHeader = true,
+  shoppingItems, tabItems, mode, guest }: {
     children?: ReactNode;
     title?: string;
-    showHeader?: boolean;
+    showStatusHeader?: boolean;
+    showTabsHeader?: boolean;
     showFooter?: boolean;
-    shoppingItems?: number;
+    tabItems?: TABS_INFO[];
+    shoppingItems?: ORDER_INFO[];
     langTextColor?: string;
     mode?: boolean;
     guest?: string;
@@ -32,7 +34,8 @@ export const Layout = ({
     <Box>
       <Helmet><title>Flash Order - {title}</title></Helmet>
       <LayoutLoading loading={loading} />
-      <StatusHeader show={showHeader} mode={mode} guest={guest} />
+      <StatusHeader show={showStatusHeader} mode={mode} guest={guest} />
+      <TabsHeader show={showTabsHeader} tabs={tabItems} />
       {children}
       <ShoppingCart show={showFooter} item={shoppingItems} />
     </Box>
@@ -89,5 +92,16 @@ export const LayoutButton = ({ icon, text, active, onClick, props }: {
       _hover={{ bg: 'teal.500', color: 'white' }}>
       {text}
     </Button>
+  );
+};
+/* Custom Tag */
+export const LayoutTag = ({ props, title }: {
+  props?: ButtonProps;
+  title: string;
+}) => {
+  return (
+    <Button {...props} size="md" borderColor="teal.500" border="1px solid" bg="teal.400"
+      borderRadius="8px" _active={{ bg: 'teal.400', color: 'white' }}
+      _hover={{ bg: 'teal.400', color: 'white' }}>{title}</Button>
   );
 };
