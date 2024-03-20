@@ -5,7 +5,7 @@ import { useWindowSize } from "react-use";
 
 const ShoppingCart = ({ show = true, item }: {
   show?: boolean;
-  item?: ORDER_INFO[];
+  item?: ORDER_RECORD[];
 }) => {
   const { width, height } = useWindowSize();
   const { isOpen, onClose, onToggle } = useDisclosure();
@@ -15,8 +15,8 @@ const ShoppingCart = ({ show = true, item }: {
     <Box display="flex" justifyContent={item?.length ? "space-between" : ""} alignItems="center" zIndex={1401}
       width="100%" bg="#353535" position="fixed" bottom={0} height="3rem" >
       <Button borderRadius="0" height="100%" bg="#252525" position="relative" mr=".5rem"
-        onClick={() => item ? onToggle() : ''}>
-        {item?.length && <Badge display="flex" justifyContent="center" alignItems="center" borderRadius="50rem" bg="red.500" position="absolute" top="-8px" right="-8px" w="22px" h="22px">
+        onClick={() => item?.length !== 0 ? onToggle() : ''}>
+        {item?.length !== 0 && <Badge display="flex" justifyContent="center" alignItems="center" borderRadius="50rem" bg="red.500" position="absolute" top="-8px" right="-8px" w="22px" h="22px">
           <Text fontSize="md" color="white">{item?.length}</Text>
         </Badge>}
         <i className="fa-solid fa-cart-shopping"></i>
@@ -39,7 +39,7 @@ const ShoppingCart = ({ show = true, item }: {
             </Box>
           </DrawerHeader>
           <DrawerBody maxH={width > height ? "14rem" : "24rem"} minH={width > height ? "14rem" : "24rem"}>
-            {item?.map((item: ORDER_INFO) => (
+            {item?.map((item: ORDER_RECORD) => (
               <Box key={item.id} display="flex" justifyContent="space-between" borderBottom=".5px solid #e3e3e3"
                 py=".5rem">
                 <HStack spacing={5}>

@@ -17,8 +17,8 @@ export const Layout = ({
     showStatusHeader?: boolean;
     showTabsHeader?: boolean;
     showFooter?: boolean;
-    tabItems?: TABS_INFO[];
-    shoppingItems?: ORDER_INFO[];
+    tabItems?: ORDER_INFO[];
+    shoppingItems?: ORDER_RECORD[];
     langTextColor?: string;
     mode?: boolean;
     guest?: string;

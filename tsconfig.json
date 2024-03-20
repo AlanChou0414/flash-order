@@ -28,7 +28,6 @@
       "@hooks/*": ["hooks/*"],
       "@pages/*": ["pages/*"],
       "@routes/*": ["routes/*"],
-      "@services/*": ["services/*"],
       "@enum/*": ["enum/*"],
       "@utils/*": ["utils/*"],
       "@locales/*":["locales/*"],
