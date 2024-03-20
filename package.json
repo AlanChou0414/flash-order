@@ -17,6 +17,7 @@
     "@react-spring/web": "^9.7.3",
     "@types/js-cookie": "^3.0.6",
     "@types/react-helmet": "^6.1.11",
+    "axios": "^1.6.8",
     "framer-motion": "^11.0.12",
     "i18next": "^23.10.1",
     "i18next-http-backend": "^2.5.0",

@@ -29,7 +29,7 @@ export const StatusHeader = ({ show = true, mode, guest }: {
 };
 
 export const TabsHeader = ({ show = true, tabs }: {
-  tabs?: TABS_INFO[];
+  tabs?: ORDER_INFO[];
   show?: boolean;
 }) => {
   return (
@@ -39,7 +39,7 @@ export const TabsHeader = ({ show = true, tabs }: {
       overflowX="auto" width="100%" overflowY="hidden">
       <HStack spacing={4} width="200%">
         {tabs?.map((item) => (
-          <Center key={item.id}><LayoutTag title={item.name} /></Center>
+          <Center key={item.id}><LayoutTag title={item.label} /></Center>
         ))}
       </HStack >
     </Box >

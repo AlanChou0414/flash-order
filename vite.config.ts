@@ -10,7 +10,6 @@ export default defineConfig({
       '@hooks': '/src/hooks',
       '@pages': '/src/pages',
       '@routes': '/src/routes',
-      '@services': '/src/services',
       '@enum': '/src/enum',
       '@utils': '/src/utils',
       '@i18n': '/src/i18n',

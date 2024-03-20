@@ -1,0 +1,365 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "id": 1,
+      "label": "珍珠系列",
+      "detail": [
+        {
+          "id": 1001,
+          "name": "經典珍珠奶茶",
+          "amount": 80,
+          "photo": "https://example.com/photo1.jpg"
+        },
+        {
+          "id": 1002,
+          "name": "焦糖珍珠拿鐵",
+          "amount": 90,
+          "photo": "https://example.com/photo2.jpg"
+        },
+        {
+          "id": 1003,
+          "name": "椰香珍珠冰沙",
+          "amount": 85,
+          "photo": "https://example.com/photo3.jpg"
+        },
+        {
+          "id": 1004,
+          "name": "抹茶珍珠奶茶",
+          "amount": 85,
+          "photo": "https://example.com/photo4.jpg"
+        },
+        {
+          "id": 1005,
+          "name": "巧克力珍珠奶茶",
+          "amount": 90,
+          "photo": "https://example.com/photo5.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "label": "果汁系列",
+      "detail": [
+        {
+          "id": 2001,
+          "name": "鮮榨芒果汁",
+          "amount": 70,
+          "photo": "https://example.com/photo6.jpg"
+        },
+        {
+          "id": 2002,
+          "name": "草莓奇異果冰沙",
+          "amount": 85,
+          "photo": "https://example.com/photo7.jpg"
+        },
+        {
+          "id": 2003,
+          "name": "葡萄柚青檸汁",
+          "amount": 75,
+          "photo": "https://example.com/photo8.jpg"
+        },
+        {
+          "id": 2004,
+          "name": "番茄紅蘿蔔汁",
+          "amount": 80,
+          "photo": "https://example.com/photo9.jpg"
+        },
+        {
+          "id": 2005,
+          "name": "柳橙西瓜汁",
+          "amount": 75,
+          "photo": "https://example.com/photo10.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "label": "咖啡系列",
+      "detail": [
+        {
+          "id": 3001,
+          "name": "拿鐵咖啡",
+          "amount": 65,
+          "photo": "https://example.com/photo11.jpg"
+        },
+        {
+          "id": 3002,
+          "name": "卡布奇諾",
+          "amount": 75,
+          "photo": "https://example.com/photo12.jpg"
+        },
+        {
+          "id": 3003,
+          "name": "榛果拿鐵",
+          "amount": 80,
+          "photo": "https://example.com/photo13.jpg"
+        },
+        {
+          "id": 3004,
+          "name": "冰滴咖啡",
+          "amount": 85,
+          "photo": "https://example.com/photo14.jpg"
+        },
+        {
+          "id": 3005,
+          "name": "美式咖啡",
+          "amount": 70,
+          "photo": "https://example.com/photo15.jpg"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "label": "奶茶系列",
+      "detail": [
+        {
+          "id": 4001,
+          "name": "香濃鮮奶茶",
+          "amount": 75,
+          "photo": "https://example.com/photo16.jpg"
+        },
+        {
+          "id": 4002,
+          "name": "雪山奶霜綠茶",
+          "amount": 85,
+          "photo": "https://example.com/photo17.jpg"
+        },
+        {
+          "id": 4003,
+          "name": "冰淇淋紅茶",
+          "amount": 80,
+          "photo": "https://example.com/photo18.jpg"
+        },
+        {
+          "id": 4004,
+          "name": "蜜香四季春",
+          "amount": 85,
+          "photo": "https://example.com/photo19.jpg"
+        },
+        {
+          "id": 4005,
+          "name": "椰香椰果奶茶",
+          "amount": 90,
+          "photo": "https://example.com/photo20.jpg"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "label": "特調飲品系列",
+      "detail": [
+        {
+          "id": 5001,
+          "name": "薄荷咖啡",
+          "amount": 80,
+          "photo": "https://example.com/photo21.jpg"
+        },
+        {
+          "id": 5002,
+          "name": "芒果冰沙拿鐵",
+          "amount": 90,
+          "photo": "https://example.com/photo22.jpg"
+        },
+        {
+          "id": 5003,
+          "name": "檸檬蜂蜜茶",
+          "amount": 75,
+          "photo": "https://example.com/photo23.jpg"
+        },
+        {
+          "id": 5004,
+          "name": "抹茶拿鐵",
+          "amount": 85,
+          "photo": "https://example.com/photo24.jpg"
+        },
+        {
+          "id": 5005,
+          "name": "草莓覆盆子氣泡水",
+          "amount": 70,
+          "photo": "https://example.com/photo25.jpg"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "label": "鮮果茶系列",
+      "detail": [
+        {
+          "id": 6001,
+          "name": "蘋果莓果茶",
+          "amount": 75,
+          "photo": "https://example.com/photo26.jpg"
+        },
+        {
+          "id": 6002,
+          "name": "水蜜桃冰茶",
+          "amount": 85,
+          "photo": "https://example.com/photo27.jpg"
+        },
+        {
+          "id": 6003,
+          "name": "櫻桃草莓茶",
+          "amount": 80,
+          "photo": "https://example.com/photo28.jpg"
+        },
+        {
+          "id": 6004,
+          "name": "蜜瓜香芒茶",
+          "amount": 85,
+          "photo": "https://example.com/photo29.jpg"
+        },
+        {
+          "id": 6005,
+          "name": "葡萄檸檬冰茶",
+          "amount": 90,
+          "photo": "https://example.com/photo30.jpg"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "label": "特調熱飲系列",
+      "detail": [
+        {
+          "id": 7001,
+          "name": "巧克力奶昔",
+          "amount": 80,
+          "photo": "https://example.com/photo31.jpg"
+        },
+        {
+          "id": 7002,
+          "name": "香草焦糖拿鐵",
+          "amount": 90,
+          "photo": "https://example.com/photo32.jpg"
+        },
+        {
+          "id": 7003,
+          "name": "榛果松露咖啡",
+          "amount": 75,
+          "photo": "https://example.com/photo33.jpg"
+        },
+        {
+          "id": 7004,
+          "name": "草莓忌廉白咖啡",
+          "amount": 85,
+          "photo": "https://example.com/photo34.jpg"
+        },
+        {
+          "id": 7005,
+          "name": "柚香椰香奶茶",
+          "amount": 70,
+          "photo": "https://example.com/photo35.jpg"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "label": "清涼冰沙系列",
+      "detail": [
+        {
+          "id": 8001,
+          "name": "綠豆薏仁冰沙",
+          "amount": 70,
+          "photo": "https://example.com/photo36.jpg"
+        },
+        {
+          "id": 8002,
+          "name": "芒果珍珠冰沙",
+          "amount": 85,
+          "photo": "https://example.com/photo37.jpg"
+        },
+        {
+          "id": 8003,
+          "name": "柳橙奇異果冰沙",
+          "amount": 75,
+          "photo": "https://example.com/photo38.jpg"
+        },
+        {
+          "id": 8004,
+          "name": "哈密瓜牛奶冰沙",
+          "amount": 80,
+          "photo": "https://example.com/photo39.jpg"
+        },
+        {
+          "id": 8005,
+          "name": "草莓蘋果冰沙",
+          "amount": 75,
+          "photo": "https://example.com/photo40.jpg"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "label": "健康營養系列",
+      "detail": [
+        {
+          "id": 9001,
+          "name": "紫菜蛋花湯",
+          "amount": 65,
+          "photo": "https://example.com/photo41.jpg"
+        },
+        {
+          "id": 9002,
+          "name": "蘋果燕麥粥",
+          "amount": 75,
+          "photo": "https://example.com/photo42.jpg"
+        },
+        {
+          "id": 9003,
+          "name": "番茄蔬菜湯",
+          "amount": 80,
+          "photo": "https://example.com/photo43.jpg"
+        },
+        {
+          "id": 9004,
+          "name": "蔬菜沙拉配堅果",
+          "amount": 85,
+          "photo": "https://example.com/photo44.jpg"
+        },
+        {
+          "id": 9005,
+          "name": "鮮榨果菜汁",
+          "amount": 70,
+          "photo": "https://example.com/photo45.jpg"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "label": "甜點系列",
+      "detail": [
+        {
+          "id": 10001,
+          "name": "抹茶紅豆蛋糕",
+          "amount": 80,
+          "photo": "https://example.com/photo46.jpg"
+        },
+        {
+          "id": 10002,
+          "name": "草莓奶油塔",
+          "amount": 90,
+          "photo": "https://example.com/photo47.jpg"
+        },
+        {
+          "id": 10003,
+          "name": "巧克力榛果布朗尼",
+          "amount": 75,
+          "photo": "https://example.com/photo48.jpg"
+        },
+        {
+          "id": 10004,
+          "name": "藍莓乳酪蛋糕",
+          "amount": 85,
+          "photo": "https://example.com/photo49.jpg"
+        },
+        {
+          "id": 10005,
+          "name": "香草冰淇淋杯",
+          "amount": 70,
+          "photo": "https://example.com/photo50.jpg"
+        }
+      ]
+    }
+  ]
+}
