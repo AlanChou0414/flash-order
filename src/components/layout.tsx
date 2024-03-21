@@ -1,19 +1,21 @@
-import { Box, Button, ButtonProps, Center, Select, Spinner, useBoolean } from "@chakra-ui/react";
+import { Box, Button, ButtonProps, Center, LinkOverlay, Select, Spinner, Stack, useBoolean } from "@chakra-ui/react";
 import { COOKIES } from "@constants/cookies";
 import i18n from "@i18n";
 import Cookies from "js-cookie";
-import { ReactElement, ReactNode, useEffect, useState } from "react";
+import { Dispatch, ReactElement, ReactNode, SetStateAction, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import ShoppingCart from "./footer";
 import { StatusHeader, TabsHeader } from "./header";
 
 /* Layout Container */
 export const Layout = ({
-  children, title = '',
+  children, title = '', scrolling, isOpenConfirmPopup,
   showStatusHeader = true, showFooter = true, showTabsHeader = true,
   shoppingItems, tabItems, mode, guest }: {
     children?: ReactNode;
     title?: string;
+    scrolling?: boolean;
+    isOpenConfirmPopup?: boolean;
     showStatusHeader?: boolean;
     showTabsHeader?: boolean;
     showFooter?: boolean;
@@ -21,7 +23,7 @@ export const Layout = ({
     shoppingItems?: ORDER_RECORD[];
     langTextColor?: string;
     mode?: boolean;
-    guest?: string;
+    guest?: number;
   }) => {
   const [loading, setLoading] = useBoolean();
   useEffect(() => {
@@ -35,9 +37,9 @@ export const Layout = ({
       <Helmet><title>Flash Order - {title}</title></Helmet>
       <LayoutLoading loading={loading} />
       <StatusHeader show={showStatusHeader} mode={mode} guest={guest} />
-      <TabsHeader show={showTabsHeader} tabs={tabItems} />
+      <TabsHeader show={showTabsHeader} tabs={tabItems} scrolling={scrolling} />
       {children}
-      <ShoppingCart show={showFooter} item={shoppingItems} />
+      <ShoppingCart show={showFooter} item={shoppingItems} isOpenConfirmPopup={isOpenConfirmPopup} />
     </Box>
   );
 };
@@ -72,7 +74,7 @@ export const LayoutLoading = ({ loading }: {
   return (
     loading &&
     <Center minH="100vh" bg="#00000050" position="sticky"
-      top={0} left={0} bottom={0} right={0} zIndex={999}>
+      top={0} left={0} bottom={0} right={0} zIndex={1000}>
       <Spinner size="xl" thickness=".2rem" color="teal.500" />
     </Center>
   );
@@ -95,13 +97,31 @@ export const LayoutButton = ({ icon, text, active, onClick, props }: {
   );
 };
 /* Custom Tag */
-export const LayoutTag = ({ props, title }: {
+export const LayoutTag = ({ props, section, title }: {
   props?: ButtonProps;
+  section?: string;
   title: string;
 }) => {
   return (
-    <Button {...props} size="md" borderColor="teal.500" border="1px solid" bg="teal.400"
-      borderRadius="8px" _active={{ bg: 'teal.400', color: 'white' }}
-      _hover={{ bg: 'teal.400', color: 'white' }}>{title}</Button>
+    <Button as={LinkOverlay} href={section} {...props} size="md" borderColor="teal.700"
+      border="1px solid" bg="teal.700" borderRadius="8px" _active={{ bg: 'teal.700', color: 'white' }}
+      _hover={{ bg: 'teal.700', color: 'white' }}>{title}</Button>
+  );
+};
+/* Custom Radio */
+export const LayoutRadio = ({ options, active, setActive }: {
+  options: { id: string; content: string; }[];
+  active: string;
+  setActive: Dispatch<SetStateAction<string>>;
+}) => {
+  return (
+    <Stack spacing={1} mt=".5rem">
+      {options.map((item, i: number) => (
+        <Box key={i} id={item.id} display="flex" alignItems="center" border="1px solid #e3e3e3"
+          borderRadius="10px" p=".8rem" bg={active === item.id ? 'gray.500' : 'gray.300'}
+          fontSize="md" color={active === item.id ? 'white' : 'gray.600'}
+          onClick={e => setActive(e.currentTarget.id)}>{item.content}</Box>
+      ))}
+    </Stack>
   );
 };
