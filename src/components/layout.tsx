@@ -1,4 +1,4 @@
-import { Box, Button, ButtonProps, Center, LinkOverlay, Select, Spinner, Stack, useBoolean } from "@chakra-ui/react";
+import { Box, Button, ButtonProps, Center, LinkOverlay, Select, Spinner, Stack, StackProps, useBoolean } from "@chakra-ui/react";
 import { COOKIES } from "@constants/cookies";
 import i18n from "@i18n";
 import Cookies from "js-cookie";
@@ -109,13 +109,14 @@ export const LayoutTag = ({ props, section, title }: {
   );
 };
 /* Custom Radio */
-export const LayoutRadio = ({ options, active, setActive }: {
+export const LayoutRadio = ({ options, active, setActive, props }: {
   options: { id: string; content: string; }[];
   active: string;
   setActive: Dispatch<SetStateAction<string>>;
+  props?: StackProps;
 }) => {
   return (
-    <Stack spacing={1} mt=".5rem">
+    <Stack {...props} spacing={1} mt=".5rem">
       {options.map((item, i: number) => (
         <Box key={i} id={item.id} display="flex" alignItems="center" border="1px solid #e3e3e3"
           borderRadius="10px" p=".8rem" bg={active === item.id ? 'gray.500' : 'gray.300'}
