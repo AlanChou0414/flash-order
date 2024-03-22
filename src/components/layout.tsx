@@ -116,7 +116,7 @@ export const LayoutRadio = ({ options, active, setActive, props }: {
   props?: StackProps;
 }) => {
   return (
-    <Stack {...props} spacing={1} mt=".5rem">
+    <Stack {...props} spacing={1} mt=".3rem">
       {options.map((item, i: number) => (
         <Box key={i} id={item.id} display="flex" alignItems="center" border="1px solid #e3e3e3"
           borderRadius="10px" p=".8rem" bg={active === item.id ? 'gray.500' : 'gray.300'}

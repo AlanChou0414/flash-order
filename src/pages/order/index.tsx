@@ -25,7 +25,6 @@ const PageMain = () => {
     };
     fetchData();
   }, []);
-
   return (
     <Layout title={i18n.t('ordering')} mode={store.mode?.stayInd} guest={store.mode?.guest}
       shoppingItems={[]} tabItems={data} scrolling={scrolling} isOpenConfirmPopup={isOpen}>
