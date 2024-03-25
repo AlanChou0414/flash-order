@@ -16,6 +16,10 @@ const PageMain = () => {
   const { height } = useWindowSize();
   const [data, setData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [activeInfo, setActiveInfo] = useState<ORDER_DETAIL>({
+    id: 0, name: '', amount: 0, photo: ''
+  });
+  const [record, setRecord] = useState<ORDER_RECORD[]>([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -25,9 +29,13 @@ const PageMain = () => {
     };
     fetchData();
   }, []);
+  const handleOpenPopup = (info: ORDER_DETAIL) => {
+    onOpen();
+    setActiveInfo(info);
+  };
   return (
     <Layout title={i18n.t('ordering')} mode={store.mode?.stayInd} guest={store.mode?.guest}
-      shoppingItems={[]} tabItems={data} scrolling={scrolling} isOpenConfirmPopup={isOpen}>
+      shoppingItems={record} tabItems={data} scrolling={scrolling} isOpenConfirmPopup={isOpen}>
       <VStack ref={scrollRef} spacing={10} alignItems="start" p="2rem" h={height - 150}
         overflowY="auto" scrollBehavior="smooth">
         {data?.map((item: ORDER_INFO) => (
@@ -39,7 +47,8 @@ const PageMain = () => {
               </AbsoluteCenter>
             </Box>
             {item?.detail.map((item: ORDER_DETAIL) => (
-              <HStack key={item.id} spacing={4} position="relative" py=".8rem" onClick={onOpen}>
+              <HStack key={item.id} spacing={4} position="relative" py=".8rem"
+                onClick={() => handleOpenPopup(item)}>
                 <Image src={`https://picsum.photos/150/150?random=${item.id}`}
                   w="5rem" h="5rem" borderRadius="10px" />
                 <VStack spacing={3} alignItems="start">
@@ -56,7 +65,8 @@ const PageMain = () => {
           </Box>
         ))}
       </VStack>
-      <OrderConfirmPopup isOpen={isOpen} onClose={onClose} />
+      <OrderConfirmPopup isOpen={isOpen} onClose={onClose} activeInfo={activeInfo} record={record}
+        setRecord={setRecord} />
     </Layout>
   );
 };

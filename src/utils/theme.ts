@@ -11,8 +11,6 @@ export const theme = extendTheme({
         padding: 0,
         margin: 0,
         height: '100%',
-        minHeight: '100vh',
-        overflowY: 'auto',
         overflowX: 'hidden',
         scrollBehavior: 'smooth',
         color: 'gray.900',
